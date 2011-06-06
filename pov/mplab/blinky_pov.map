@@ -1,0 +1,278 @@
+MPLINK 4.38, Linker
+Linker Map File - Created Fri May 20 00:07:02 2011
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+             Reset_Vector       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                 messages       code   0x000003    program   0x000096
+              blinky_grid       code   0x000050    program   0x000174
+               font_table       code   0x000300    program   0x00019a
+              larson_data       code   0x000600    program   0x000100
+           larson_section       code   0x000680    program   0x00014a
+            delay_section       code   0x000725    program   0x0000c8
+             font_section       code   0x000789    program   0x00002a
+           button_section       code   0x00079e    program   0x000024
+.config_8007_BLINKY_POV.O       code   0x008007    program   0x000002
+.config_8008_BLINKY_POV.O       code   0x008008    program   0x000002
+             eeprom_table       code   0x00f000    program   0x00006c
+                   .udata      udata   0x000020       data   0x00001c
+            message_udata      udata   0x0000a0       data   0x00000b
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x00004d      
+                            0x000050    0x000109      
+                            0x000300    0x0003cc      
+                            0x000600    0x0007af      
+                            0x008007    0x008008      
+                            0x00f000    0x00f035      
+            957 out of 2310 program addresses used, program memory utilization is 41%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                  GET_BIT   0x000101    program     extern H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+                    Start   0x000050    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+        _blinky_grid_00F3   0x0000f3    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+     _button_section_0009   0x0007a7    program     static H:\wnl_svn\blinky\code\asm\pov\button.asm
+     _button_section_000E   0x0007ac    program     static H:\wnl_svn\blinky\code\asm\pov\button.asm
+      _delay_section_0007   0x00072c    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+      _delay_section_001F   0x000744    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+      _delay_section_0028   0x00074d    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+       advance_char_index   0x0000cd    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+             advance_down   0x0006c7    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+         advance_end_type   0x0000ef    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+          advance_message   0x0000f8    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+advance_message_after_release   0x0000f1    program     extern H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+               advance_up   0x0006fc    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+           button_release   0x0007a5    program     extern H:\wnl_svn\blinky\code\asm\pov\button.asm
+    check_down_speed_loop   0x0006bc    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+       check_message_type   0x000083    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+      check_up_speed_loop   0x0006f1    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+              check_which   0x000009    program     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+              common_next   0x0000d4    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+              delay_10_us   0x000728    program     extern H:\wnl_svn\blinky\code\asm\pov\delay.asm
+            delay_10_us_0   0x00072a    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+             delay_200_us   0x000733    program     extern H:\wnl_svn\blinky\code\asm\pov\delay.asm
+ delay_200_us_breakable_1   0x000738    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+ delay_200_us_breakable_2   0x00073e    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+             delay_988_us   0x00073f    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+           delay_988_us_0   0x000743    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+             delay_992_us   0x000748    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+           delay_992_us_0   0x00074c    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+             delay_w00_ms   0x000752    program     extern H:\wnl_svn\blinky\code\asm\pov\delay.asm
+           delay_w00_ms_0   0x000755    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+           delay_w00_ms_1   0x000758    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+   delay_w00_ms_breakable   0x000772    program     extern H:\wnl_svn\blinky\code\asm\pov\delay.asm
+ delay_w00_ms_breakable_0   0x000778    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+ delay_w00_ms_breakable_1   0x00077b    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+               delay_w_ms   0x000725    program     extern H:\wnl_svn\blinky\code\asm\pov\delay.asm
+             delay_w_ms_0   0x00072e    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+             delay_w_ms_1   0x000731    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+     delay_w_ms_breakable   0x00075b    program     extern H:\wnl_svn\blinky\code\asm\pov\delay.asm
+   delay_w_ms_breakable_0   0x000760    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+   delay_w_ms_breakable_1   0x000763    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+        done_w_brightness   0x000697    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                     down   0x00069e    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                down_loop   0x0006a5    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+      easter_egg_end_type   0x0000f0    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+              eeprom_read   0x000047    program     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+              empty_slice   0x0000a3    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+           end_of_message   0x0000e0    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+              get_address   0x0000a6    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+         get_display_type   0x00001f    program     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+             get_end_type   0x000019    program     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+         get_num_messages   0x000071    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+                get_speed   0x000011    program     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+              inc_pressed   0x000786    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+              init_button   0x00079e    program     extern H:\wnl_svn\blinky\code\asm\pov\button.asm
+                   larson   0x000680    program     extern H:\wnl_svn\blinky\code\asm\pov\larson.asm
+     load_slice_from_font   0x000789    program     extern H:\wnl_svn\blinky\code\asm\pov\font.asm
+           low_brightness   0x000708    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                     main   0x000079    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+           messages_start   0x000003    program     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+             next_message   0x00003d    program     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+           parse_messages   0x000004    program     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+   read_animation_message   0x00008e    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+       read_fonty_message   0x000094    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+         read_the_message   0x00002b    program     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+      repeat_down_segment   0x0006c0    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+          repeat_end_type   0x0000ea    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+        repeat_up_segment   0x0006f5    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                reset_tmr   0x0000af    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+      set_high_brightness   0x000695    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+       set_low_brightness   0x000697    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                 show_eye   0x000711    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+               show_slice   0x0000a8    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+            stop_end_type   0x0000e7    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+                       up   0x0006d3    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                  up_loop   0x0006da    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+               brightness   0x00003a       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+             char_address   0x000032       data     static H:\wnl_svn\blinky\code\asm\pov\font.asm
+               char_index   0x000023       data     extern H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+               char_index   0x0000a7       data     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+             char_to_show   0x000022       data     extern H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+                   d_temp   0x000031       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                data_addr   0x000034       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+           data_block_end   0x0000a5       data     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+         data_block_start   0x0000a4       data     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+                data_byte   0x000037       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+               data_index   0x0000a6       data     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+                   delay1   0x000028       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                   delay2   0x000029       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                   delay3   0x00002a       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                   delay4   0x00002b       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+             display_type   0x0000a2       data     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+                 end_type   0x0000a1       data     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+                  eye_pos   0x000033       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+               fake_porta   0x000026       data     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+               fake_portc   0x000027       data     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+                        i   0x0000a8       data     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+          inner_loop_temp   0x00003b       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                loop_temp   0x000039       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                    loops   0x000038       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+           message_config   0x0000a0       data     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+              message_num   0x000020       data     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+             num_messages   0x000021       data     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+                pre_porta   0x000035       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                pre_portc   0x000036       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                  pressed   0x000030       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                   save_w   0x00002c       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                  save_w1   0x00002d       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                  save_w2   0x00002e       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                  save_w3   0x00002f       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                    slice   0x000025       data     extern H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+                    speed   0x0000a3       data     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+                 temptemp   0x0000a9       data     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+           tmr0_reset_val   0x000024       data     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+                    which   0x0000aa       data     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+           messages_start   0x000003    program     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+           parse_messages   0x000004    program     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+              check_which   0x000009    program     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+                get_speed   0x000011    program     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+             get_end_type   0x000019    program     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+         get_display_type   0x00001f    program     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+         read_the_message   0x00002b    program     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+             next_message   0x00003d    program     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+              eeprom_read   0x000047    program     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+                    Start   0x000050    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+         get_num_messages   0x000071    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+                     main   0x000079    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+       check_message_type   0x000083    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+   read_animation_message   0x00008e    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+       read_fonty_message   0x000094    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+              empty_slice   0x0000a3    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+              get_address   0x0000a6    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+               show_slice   0x0000a8    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+                reset_tmr   0x0000af    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+       advance_char_index   0x0000cd    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+              common_next   0x0000d4    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+           end_of_message   0x0000e0    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+            stop_end_type   0x0000e7    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+          repeat_end_type   0x0000ea    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+         advance_end_type   0x0000ef    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+      easter_egg_end_type   0x0000f0    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+advance_message_after_release   0x0000f1    program     extern H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+        _blinky_grid_00F3   0x0000f3    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+          advance_message   0x0000f8    program     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+                  GET_BIT   0x000101    program     extern H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+                   larson   0x000680    program     extern H:\wnl_svn\blinky\code\asm\pov\larson.asm
+      set_high_brightness   0x000695    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+        done_w_brightness   0x000697    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+       set_low_brightness   0x000697    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                     down   0x00069e    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                down_loop   0x0006a5    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+    check_down_speed_loop   0x0006bc    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+      repeat_down_segment   0x0006c0    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+             advance_down   0x0006c7    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                       up   0x0006d3    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                  up_loop   0x0006da    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+      check_up_speed_loop   0x0006f1    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+        repeat_up_segment   0x0006f5    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+               advance_up   0x0006fc    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+           low_brightness   0x000708    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                 show_eye   0x000711    program     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+               delay_w_ms   0x000725    program     extern H:\wnl_svn\blinky\code\asm\pov\delay.asm
+              delay_10_us   0x000728    program     extern H:\wnl_svn\blinky\code\asm\pov\delay.asm
+            delay_10_us_0   0x00072a    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+      _delay_section_0007   0x00072c    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+             delay_w_ms_0   0x00072e    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+             delay_w_ms_1   0x000731    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+             delay_200_us   0x000733    program     extern H:\wnl_svn\blinky\code\asm\pov\delay.asm
+ delay_200_us_breakable_1   0x000738    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+ delay_200_us_breakable_2   0x00073e    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+             delay_988_us   0x00073f    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+           delay_988_us_0   0x000743    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+      _delay_section_001F   0x000744    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+             delay_992_us   0x000748    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+           delay_992_us_0   0x00074c    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+      _delay_section_0028   0x00074d    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+             delay_w00_ms   0x000752    program     extern H:\wnl_svn\blinky\code\asm\pov\delay.asm
+           delay_w00_ms_0   0x000755    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+           delay_w00_ms_1   0x000758    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+     delay_w_ms_breakable   0x00075b    program     extern H:\wnl_svn\blinky\code\asm\pov\delay.asm
+   delay_w_ms_breakable_0   0x000760    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+   delay_w_ms_breakable_1   0x000763    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+   delay_w00_ms_breakable   0x000772    program     extern H:\wnl_svn\blinky\code\asm\pov\delay.asm
+ delay_w00_ms_breakable_0   0x000778    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+ delay_w00_ms_breakable_1   0x00077b    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+              inc_pressed   0x000786    program     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+     load_slice_from_font   0x000789    program     extern H:\wnl_svn\blinky\code\asm\pov\font.asm
+              init_button   0x00079e    program     extern H:\wnl_svn\blinky\code\asm\pov\button.asm
+           button_release   0x0007a5    program     extern H:\wnl_svn\blinky\code\asm\pov\button.asm
+     _button_section_0009   0x0007a7    program     static H:\wnl_svn\blinky\code\asm\pov\button.asm
+     _button_section_000E   0x0007ac    program     static H:\wnl_svn\blinky\code\asm\pov\button.asm
+              message_num   0x000020       data     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+             num_messages   0x000021       data     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+             char_to_show   0x000022       data     extern H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+               char_index   0x000023       data     extern H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+           tmr0_reset_val   0x000024       data     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+                    slice   0x000025       data     extern H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+               fake_porta   0x000026       data     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+               fake_portc   0x000027       data     static H:\wnl_svn\blinky\code\asm\pov\blinky_pov.asm
+                   delay1   0x000028       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                   delay2   0x000029       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                   delay3   0x00002a       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                   delay4   0x00002b       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                   save_w   0x00002c       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                  save_w1   0x00002d       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                  save_w2   0x00002e       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                  save_w3   0x00002f       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                  pressed   0x000030       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+                   d_temp   0x000031       data     static H:\wnl_svn\blinky\code\asm\pov\delay.asm
+             char_address   0x000032       data     static H:\wnl_svn\blinky\code\asm\pov\font.asm
+                  eye_pos   0x000033       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                data_addr   0x000034       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                pre_porta   0x000035       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                pre_portc   0x000036       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                data_byte   0x000037       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                    loops   0x000038       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+                loop_temp   0x000039       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+               brightness   0x00003a       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+          inner_loop_temp   0x00003b       data     static H:\wnl_svn\blinky\code\asm\pov\larson.asm
+           message_config   0x0000a0       data     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+                 end_type   0x0000a1       data     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+             display_type   0x0000a2       data     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+                    speed   0x0000a3       data     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+         data_block_start   0x0000a4       data     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+           data_block_end   0x0000a5       data     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+               data_index   0x0000a6       data     extern H:\wnl_svn\blinky\code\asm\pov\messages.asm
+               char_index   0x0000a7       data     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+                        i   0x0000a8       data     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+                 temptemp   0x0000a9       data     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+                    which   0x0000aa       data     static H:\wnl_svn\blinky\code\asm\pov\messages.asm
+
+
