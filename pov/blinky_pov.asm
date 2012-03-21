@@ -1,26 +1,3 @@
-; Wayne and Layne present:
-; Blinky GRID, firmware revision 1.01
-; Last Updated: June 6, 2011
-; Copyright (c) 2011, Wayne and Layne, LLC
-;
-; This program is free software; you can redistribute it and/or modify
-; it under the terms of the GNU General Public License as published by
-; the Free Software Foundation; either version 2 of the License, or
-; (at your option) any later version.
-;
-; This program is distributed in the hope that it will be useful,
-; but WITHOUT ANY WARRANTY; without even the implied warranty of
-; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-; GNU General Public License for more details.
-;
-; You should have received a copy of the GNU General Public License along
-; with this program; if not, write to the Free Software Foundation, Inc.,
-; 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-;
-;
-; For pictures, instructions, and software, please visit:
-; http://www.wayneandlayne.com/projects/blinky/
-
     include "P16F1823.INC"
 
 ;;config bits
@@ -76,6 +53,9 @@ tmr0_reset_val res 1
 slice res 1
 fake_porta res 1
 fake_portc res 1
+
+known_zero res 1
+rev_slice res 1
 
 	global char_to_show, char_index, slice
 ;;code!
@@ -189,12 +169,27 @@ check_message_type
 				goto	read_animation_message
 
 read_animation_message
-
+				banksel	known_zero
+				clrf	known_zero
+               			bsf     known_zero, 3  ; known_zero = 8
 				banksel	data_index
 				movf	data_index, w
 				call	eeprom_read
+				;this is upside down, because of the programmer and grid and just "the way it is"
+				banksel	rev_slice
+				movwf	rev_slice
+rev_byte        
+				banksel rev_slice
+				rrf rev_slice, f
+				banksel	slice
+		               	rlf slice, f
+				banksel known_zero
+       		        	decfsz known_zero, f
+      		        	goto rev_byte
+				;;at this point, slice is forward
 				banksel slice
-				movwf	slice
+				movf	slice, w
+				
 				goto	show_slice
 
 read_fonty_message

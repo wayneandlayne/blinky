@@ -6,7 +6,7 @@
 # Last updated: June 6, 2011
 
 MPLABX="/opt/microchip/mplabx"
-export PATH="$PATH:/usr/hitech/picc/9.80/bin:/usr/hitech/picc/9.80a/bin:/usr/share/pk2/:$HOME/installers/pk2cmdv1-20Linux2-6:$MPLABX/mpasmx"
+export PATH="$PATH:/usr/hitech/picc/9.82/bin:/usr/hitech/picc/9.80/bin:/usr/hitech/picc/9.80a/bin:/usr/share/pk2/:$HOME/installers/pk2cmdv1-20Linux2-6:$MPLABX/mpasmx"
 
 PIC="16F1823"
 PROJECT="blinky_grid"
@@ -20,6 +20,8 @@ TERMINAL=gnome-terminal
 
 if [ `whoami` == "wolf" ]; then
     SVN_BASE="/home/wolf"
+elif [ `whoami` == "matthew" ]; then
+    SVN_BASE="/home/matthew/repo"
 else
     echo "Unknown user" 
     exit 1
@@ -65,14 +67,14 @@ hexmate bootloader.hex $PROJECT.hex > combined.hex
 
 
 #pk2cmd -PPIC$PIC -E -J -F $PROJECT.hex -M -R -W
-pk2cmd -PPIC$PIC -E -J -F combined.hex -M -R -W
+pk2cmd -PPIC$PIC -E -J -F combined.hex -M -R -T
 
 # -P to specify which part
 # -E to erase part
 # -J Show progress percent complete
 # -F is hex file
 # -M program all memories and verify
-# -T keep power on after program
+# -T internal power, keep power on after program
 # -R turn the pic on after program
 # -W for external power
 

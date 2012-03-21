@@ -3,10 +3,10 @@
 # Build script for Blinky POV bootloader, written in assembly
 # Written by Matthew Beckler and Adam Wolf, for Wayne and Layne, LLC
 # Released under the GNU General Public License, version 2 (or later, your choice)
-# Last updated: June 6, 2011
+# Last updated: January 26, 2012
 
 MPLABX="/opt/microchip/mplabx"
-export PATH="$PATH:/usr/hitech/picc/9.80/bin:/usr/hitech/picc/9.80a/bin:/usr/share/pk2/:$HOME/installers/pk2cmdv1-20Linux2-6:$MPLABX/mpasmx"
+export PATH="$PATH:/usr/hitech/picc/9.82/bin:/usr/hitech/picc/9.81/bin:/usr/share/pk2/:$HOME/installers/pk2cmdv1-20Linux2-6:$MPLABX/mpasmx"
 
 PIC="16F1823"
 PROJECT="blinky_pov"
@@ -25,6 +25,8 @@ fi
 
 if [ `whoami` == "wolf" ]; then
     SVN_BASE="/home/wolf"
+elif [ `whoami` == "matthew" ]; then
+    SVN_BASE="/home/matthew/repo"
 else
     echo "Unknown user" 
     exit 1
@@ -81,7 +83,7 @@ pk2cmd -PPIC$PIC -E -J -F $HEXFILE -M -R -W
 # -J Show progress percent complete
 # -F is hex file
 # -M program all memories and verify
-# -T keep power on after program
+# -T external power, and keep power on after program
 # -R turn the pic on after program
 # -W for external power
 
