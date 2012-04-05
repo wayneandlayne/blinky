@@ -1,0 +1,13 @@
+Released hex files for the Blinky Grid and Blinky POV.
+For more information: http://www.wayneandlayne.com/projects/blinky/
+
+Since the code consists of two parts (bootloader code and user/blinky code) there are three types of hex files we release for the blinky kits:
+
+1. Just the userland/blinky code. This is the code that reads messages from the EEPROM memory and decides which LEDs to turn on at what time.
+
+2. Just the bootloader code. This is the code that watches the flashing boxes using the light sensors and stores the transmitted messages in the EEPROM memory for later use by the user code. It also contains the font table.
+
+3. The combination of the bootloader code and the userland code. This is what we use to program all our chips before putting them in kits, and its what you probably want to use to try and rescue yoru blinky chip if it got messed up somehow.
+
+Let us know if you have any questions! http://www.wayneandlayne.com/contact/
+
