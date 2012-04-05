@@ -1,0 +1,43 @@
+body
+{
+  background-color: black;
+  color: white;
+}
+
+.drag, .list
+{
+  width: 550px;
+  border: 1px dashed white;
+  margin: 5px;
+  padding: 5px;
+}
+
+.drag
+{
+  z-index: 100;
+  position:absolute;
+  opacity: .50;
+  filter: alpha(opacity=50);
+}
+
+.list
+{
+  position:relative;
+  z-index: 1;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  top: 0px;
+  left: 0px;
+}
+.move
+{
+  width: 24px;
+  height: 24px;
+  cursor: move;
+}
+.delete
+{
+  width: 24px;
+  height: 24px;
+  border: 0;
+}
