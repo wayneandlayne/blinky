@@ -1,0 +1,230 @@
+# EESchema Netlist Version 1.1 created  Sat 16 Apr 2011 02:02:37 PM CDT
+(
+ ( /4CBF9186 BT2 BT1 BATTERY
+  ( 1 /VDD )
+  ( 2 GND )
+ )
+ ( /4CBF9196 C1 C1 C
+  ( 1 /VDD )
+  ( 2 GND )
+ )
+ ( /4CC26EF4 LED_5MM_PRETTY D1 LED
+  ( 1 /LED0 )
+  ( 2 GND )
+ )
+ ( /4CC26EF3 LED_5MM_PRETTY D2 LED
+  ( 1 /LED1 )
+  ( 2 GND )
+ )
+ ( /4CC26EBF LED_5MM_PRETTY D3 LED
+  ( 1 /LED2 )
+  ( 2 GND )
+ )
+ ( /4CC26EC2 LED_5MM_PRETTY D4 LED
+  ( 1 /LED3 )
+  ( 2 GND )
+ )
+ ( /4CC26F1C LED_5MM_PRETTY D5 LED
+  ( 1 /LED4 )
+  ( 2 GND )
+ )
+ ( /4CC26F1B LED_5MM_PRETTY D6 LED
+  ( 1 /LED5 )
+  ( 2 GND )
+ )
+ ( /4CC26F30 LED_5MM_PRETTY D7 LED
+  ( 1 /LED6 )
+  ( 2 GND )
+ )
+ ( /4CC26F31 LED_5MM_PRETTY D8 LED
+  ( 1 /LED7 )
+  ( 2 GND )
+ )
+ ( /4D389B31 LED_3MM_PRETTY D9 SCLK
+  ( 1 /SCLK )
+  ( 2 /VDD )
+ )
+ ( /4D4325BA LED_3MM_PRETTY D10 SDAT
+  ( 1 /SDAT )
+  ( 2 /VDD )
+ )
+ ( /4D389AA9 SIL-5 P1 ICSP
+  ( 1 /RESET )
+  ( 2 /VDD )
+  ( 3 GND )
+  ( 4 /ICSPDAT-TX )
+  ( 5 /ICSPCLK-RX )
+ )
+ ( /4D389F5A SIL-6 P2 FTDI
+  ( 1 ? )
+  ( 2 /ICSPDAT-TX )
+  ( 3 /ICSPCLK-RX )
+  ( 4 ? )
+  ( 5 ? )
+  ( 6 GND )
+ )
+ ( /4D471E4E 1pin40mil P3 MOUNT
+  ( 1 GND )
+ )
+ ( /4D5410D0 1pin40mil P4 MOUNT
+  ( 1 GND )
+ )
+ ( /4D471E4F 1pin40mil P5 MOUNT
+  ( 1 GND )
+ )
+ ( /4D595784 SIL-4 P6 BLINK
+  ( 1 /VDD )
+  ( 2 /SCLK )
+  ( 3 /SDAT )
+  ( 4 GND )
+ )
+ ( /4D389B35 R3 R1 10K
+  ( 1 GND )
+  ( 2 /SCLK )
+ )
+ ( /4D4325B9 R3 R2 10K
+  ( 1 GND )
+  ( 2 /SDAT )
+ )
+ ( /4CBF919D OMRON_6MM_PRETTY SW1 SW_PUSH
+  ( 1 /BUTTON )
+  ( 2 GND )
+ )
+ ( /4D389ABA SIL-3-W-BACK-TRACE SW2 SWITCH_INV
+  ( 1 /LED6 )
+  ( 2 N-000019 )
+  ( 3 /ICSPDAT-TX )
+ )
+ ( /4D389AFE SIL-3-W-BACK-TRACE SW3 SWITCH_INV
+  ( 1 /LED7 )
+  ( 2 N-000017 )
+  ( 3 /ICSPCLK-RX )
+ )
+ ( /4D470FF7 DIP-14__300 U1 PIC16F1823
+  ( 1 /VDD )
+  ( 2 /BUTTON )
+  ( 3 /SDAT )
+  ( 4 /RESET )
+  ( 5 /LED5 )
+  ( 6 /LED4 )
+  ( 7 /LED3 )
+  ( 8 /LED2 )
+  ( 9 /LED1 )
+  ( 10 /LED0 )
+  ( 11 /SCLK )
+  ( 12 N-000017 )
+  ( 13 N-000019 )
+  ( 14 GND )
+ )
+)
+*
+{ Allowed footprints by component:
+$component C1
+ SM*
+ C?
+ C1-1
+$endlist
+$component D1
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component D2
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component D3
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component D4
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component D5
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component D6
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component D7
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component D8
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component D9
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component D10
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component R1
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$endfootprintlist
+}

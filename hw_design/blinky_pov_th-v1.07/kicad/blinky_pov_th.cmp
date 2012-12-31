@@ -1,0 +1,171 @@
+Cmp-Mod V01 Genere par PcbNew le Sun 17 Apr 2011 01:56:23 PM CDT
+
+BeginCmp
+TimeStamp = /4CBF9186;
+Reference = BT1;
+ValeurCmp = BATTERY;
+IdModule  = BATHOLES;
+EndCmp
+
+BeginCmp
+TimeStamp = /4CBF9196;
+Reference = C1;
+ValeurCmp = C;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4CC26EF4;
+Reference = D1;
+ValeurCmp = LED;
+IdModule  = LED_5MM_PRETTY;
+EndCmp
+
+BeginCmp
+TimeStamp = /4CC26EF3;
+Reference = D2;
+ValeurCmp = LED;
+IdModule  = LED_5MM_PRETTY;
+EndCmp
+
+BeginCmp
+TimeStamp = /4CC26EBF;
+Reference = D3;
+ValeurCmp = LED;
+IdModule  = LED_5MM_PRETTY;
+EndCmp
+
+BeginCmp
+TimeStamp = /4CC26EC2;
+Reference = D4;
+ValeurCmp = LED;
+IdModule  = LED_5MM_PRETTY;
+EndCmp
+
+BeginCmp
+TimeStamp = /4CC26F1C;
+Reference = D5;
+ValeurCmp = LED;
+IdModule  = LED_5MM_PRETTY;
+EndCmp
+
+BeginCmp
+TimeStamp = /4CC26F1B;
+Reference = D6;
+ValeurCmp = LED;
+IdModule  = LED_5MM_PRETTY;
+EndCmp
+
+BeginCmp
+TimeStamp = /4CC26F30;
+Reference = D7;
+ValeurCmp = LED;
+IdModule  = LED_5MM_PRETTY;
+EndCmp
+
+BeginCmp
+TimeStamp = /4CC26F31;
+Reference = D8;
+ValeurCmp = LED;
+IdModule  = LED_5MM_PRETTY;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D389B31;
+Reference = D9;
+ValeurCmp = SCLK;
+IdModule  = LED_3MM_PRETTY;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D4325BA;
+Reference = D10;
+ValeurCmp = SDAT;
+IdModule  = LED_3MM_PRETTY;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D389AA9;
+Reference = P1;
+ValeurCmp = ICSP;
+IdModule  = SIL-5;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D389F5A;
+Reference = P2;
+ValeurCmp = FTDI;
+IdModule  = SIL-6;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D471E4E;
+Reference = P3;
+ValeurCmp = MOUNT;
+IdModule  = 1pin40mil;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D5410D0;
+Reference = P4;
+ValeurCmp = MOUNT;
+IdModule  = 1pin40mil;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D471E4F;
+Reference = P5;
+ValeurCmp = MOUNT;
+IdModule  = 1pin40mil;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D595784;
+Reference = P6;
+ValeurCmp = BLINK;
+IdModule  = SIL-4;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D389B35;
+Reference = R1;
+ValeurCmp = 10K;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D4325B9;
+Reference = R2;
+ValeurCmp = 10K;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /4CBF919D;
+Reference = SW1;
+ValeurCmp = SW_PUSH;
+IdModule  = OMRON_6MM_PRETTY;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D389ABA;
+Reference = SW2;
+ValeurCmp = SWITCH_INV;
+IdModule  = SIL-3-W-BACK-TRACE;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D389AFE;
+Reference = SW3;
+ValeurCmp = SWITCH_INV;
+IdModule  = SIL-3-W-BACK-TRACE;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D470FF7;
+Reference = U1;
+ValeurCmp = PIC16F1823;
+IdModule  = DIP-14__300;
+EndCmp
+
+EndListe
