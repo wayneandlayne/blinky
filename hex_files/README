@@ -7,7 +7,7 @@ Since the code consists of two parts (bootloader code and user/blinky code) ther
 
 2. Just the bootloader code. This is the code that watches the flashing boxes using the light sensors and stores the transmitted messages in the EEPROM memory for later use by the user code. It also contains the font table.
 
-3. The combination of the bootloader code and the userland code. This is what we use to program all our chips before putting them in kits, and its what you probably want to use to try and rescue yoru blinky chip if it got messed up somehow.
+3. The combination of the bootloader code and the userland code. This is what we use to program all our chips before putting them in kits, and its what you probably want to use to try and rescue your blinky chip if it got messed up somehow.
 
 Let us know if you have any questions! http://www.wayneandlayne.com/contact/
 
