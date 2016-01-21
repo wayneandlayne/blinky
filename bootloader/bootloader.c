@@ -1,7 +1,7 @@
 // Wayne and Layne present:
 // Blinky Bootloader, firmware revision 1.01
-// Last Updated: June 2, 2011
-// Copyright (c) 2011, Wayne and Layne, LLC
+// Last Updated: January 20, 2016
+// Copyright (c) 2016, Wayne and Layne, LLC
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -373,11 +373,11 @@ const unsigned char font_table[FONT_NUM_LETTERS][FONT_WIDTH] @ 0x300 = {
     {0b00000111, 0b00001000, 0b01110000, 0b00001000, 0b00000111}, // 0x22 Y
     {0b01100001, 0b01010001, 0b01001001, 0b01000101, 0b01000011}, // 0x23 Z
     {0b00000000, 0b01100000, 0b01100000, 0b00000000, 0b00000000}, // 0x24 period
-    {0b00000000, 0b00000000, 0b01011110, 0b00000000, 0b00000000}, // 0x27 !
-    {0b00110110, 0b01001001, 0b01010101, 0b00100010, 0b01010000}, // 0x28 &
-    {0b00000010, 0b00000001, 0b01010001, 0b00001001, 0b00000110}, // 0x25 ?
-    {0b00000000, 0b01010000, 0b00110000, 0b00000000, 0b00000000}, // 0x26 comma
-                                                                  // 0x27 space (handled in user code)
+    {0b00000000, 0b00000000, 0b01011110, 0b00000000, 0b00000000}, // 0x25 !
+    {0b00110110, 0b01001001, 0b01010101, 0b00100010, 0b01010000}, // 0x26 &
+    {0b00000010, 0b00000001, 0b01010001, 0b00001001, 0b00000110}, // 0x27 ?
+    {0b00000000, 0b01010000, 0b00110000, 0b00000000, 0b00000000}, // 0x28 comma
+                                                                  // 0x29 space (handled in user code)
 };
 
 void main(void)
