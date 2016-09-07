@@ -79,6 +79,9 @@ __CONFIG(
 
 //#define DEBUG // initializes and uses uart for feedback
 
+#define M_Min(a,b) ((a) < (b) ? (a) : (b))
+#define M_Max(a,b) ((a) > (b) ? (a) : (b))
+
 // pick one of these to use for bootloading from
 #define getch() getch_blinky()
 //#define getch() getch_uart()
@@ -196,20 +199,23 @@ void putch(char data)
     TXREG = data;
 }
 
+void puthex(unsigned char data)
+{
+    if (data > 9)
+    {
+        putch('A' + data - 10);
+    }
+    else
+    {
+        putch('0' + data);
+    }
+}
+
 // Prints a byte as two hex characters
 void unsigned_char_to_hex_uart(unsigned char a)
 {
-    unsigned char tmp = a >> 4;
-    if (tmp > 9)
-        putch(tmp - 10 + 'A');
-    else
-        putch(tmp + '0');
-
-    tmp = a & 0x0F;
-    if (tmp > 9)
-        putch(tmp - 10 + 'A');
-    else
-        putch(tmp + '0');
+    puthex(a >> 4);
+    puthex(a & 0x0F);
 }
 #endif
 
@@ -225,11 +231,15 @@ void do_auto_thresholding(void)
     {
         temp = analog_read(ANALOG_PIN_CLOCK);
         if (temp > threshold_clock)
+        {
             threshold_clock = temp;
+        }
 
         temp = analog_read(ANALOG_PIN_DATA);
         if (temp > threshold_data)
+        {
             threshold_data = temp;
+        }
 
         count--;
     }
@@ -257,7 +267,12 @@ unsigned char getch_blinky(void)
     while (count)
     {
         // waiting for the clock to change
-        while ((temp = (analog_read(ANALOG_PIN_CLOCK) > threshold_clock)) == prior_clock);
+        while ((temp = (analog_read(ANALOG_PIN_CLOCK) > threshold_clock)) == prior_clock)
+        {
+            // TODO add a check of the pushbutton to take us to some sort of sensor debugging routine
+            // Once there maybe have it use the LEDs to show the sensor level? Or UART debug?
+            // Press the button again to toggle between clock and data sensors?
+        }
         // wait for the data sample time - TODO why do we need this? The data should be ready to sample when the clock has an edge
         __delay_us(POST_CLOCK_DELAY_US); // it would appear that if I move this line down by four, things break!
         prior_clock = temp;
@@ -337,7 +352,7 @@ void checksum(void)
 #endif
 }
 
-// initiate a write to memory - this is the "required sequence" from the datashee's example 11-5
+// initiate a write to memory - this is the "required sequence" from the datasheet's example 11-5
 void write_required_sequence(void)
 {
     EECON2 = 0x55;
@@ -414,8 +429,7 @@ const unsigned char font_table[FONT_NUM_LETTERS][FONT_WIDTH] @ 0x300 = {
 
 void main(void)
 {
-    unsigned char rectype, count;
-    unsigned int temp;
+    unsigned char count, addr_hi, addr_lo, rectype;
 
     di(); // disable interrupts
     OSCCON = 0b01111000; // 16 mhz
@@ -435,7 +449,7 @@ void main(void)
 
     // init buttons
     ANSELC = 0;                 // all digital
-    TRISC = 0xFF;                  // all inputs
+    TRISC = 0xFF;               // all inputs
     PORTC = 0;
 
     TRISC0 = 0; // set PORTC0 to an output
@@ -495,6 +509,7 @@ void main(void)
     // This helps to troubleshoot light levels to both sensors
     while (1)
     {
+        unsigned int temp;
         temp = analog_read(ANALOG_PIN_CLOCK);
         unsigned_char_to_hex_uart(temp >> 8);
         unsigned_char_to_hex_uart(temp & 0xFF);
@@ -535,48 +550,14 @@ void main(void)
 
     while(1)
     {
-        //while (getch() != ':');             // wait for the start of hex record
-
         cksum = 0;                          // reset the checksum
         count = getch();                    // get the byte count
         unsigned char addr_hi = getch();
         unsigned char addr_lo = getch();
         rectype = getch();                  // get record type
-        // 00   data record
-        // 01   end of file record
+        // 01   end of file record (comes last, causes us to jump to user code)
         // 06   eeprom data record
-        // Basically, 00 is a standard data record, 01 comes last, and 06 is for blinky records - ignore all other record types
-        if (rectype == 0)
-        {
-            // this record is a data record: - TODO we should just remove support for this type of record, nobody is ever going to use it and we haven't validated it
-            EEADRL = addr_lo >> 1;              // convert hex file's byte address to a PIC word address
-            if (addr_hi & 0x01)                 // does the high byte need to roll a bit into the low address?
-                EEADRL |= 0x80;
-            EEADRH = addr_hi >> 1;              // byte to word conversion on high address byte
-
-            count >>= 1;        // byte count -> word count
-            count--;            // have to subtract one because of how the loop works below
-            // this code based on the datasheet's example 11-5 on pdf page 115 (weird)
-            EEPGD = 1;          // destination is flash memory
-            WREN = 1;           // enable writes
-            LWLO = 1;           // only load write latches
-            while (1)
-            {
-                EEDATL = getch(); // low byte
-                EEDATH = getch(); // high byte
-                if (count == 0)
-                    break;
-                write_required_sequence();
-                count--;
-                if (++EEADRL == 0) // select next address, don't forget about cross-byte overflow
-                    EEADRH++;
-            }
-            LWLO = 0; // no more loading write latches - actually write the stuff to flash!
-            checksum(); // will reset if error
-            write_required_sequence();
-            WREN = 0; // disable writes
-        }
-        else if (rectype == 1)
+        if (rectype == 1)
         {
             // END OF FILE record: prepare to run new program
             checksum(); // will reset if error
@@ -587,7 +568,7 @@ void main(void)
 #ifdef POV
             PORTC = 0xFF;
             PORTA = 0xFF;
-            __delay_ms(500);
+            __delay_ms(500); // TODO why would this be only for POV?
 #endif
             redirect_to_user();
         }
