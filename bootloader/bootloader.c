@@ -104,16 +104,49 @@ unsigned char threshold_data = 0;
 #define ANALOG_PIN_DATA         1
 unsigned char analog_read(unsigned char which)
 {
+    /*
+     * From datasheet 16.2.6:
+     *
+     * 4. Wait the required acquisition time (2 - See section 16.3).
+     * 5. Start conversion by setting the GO/DONE bit.
+     * 6. Wait for ADC conversion to complete by one of the following:
+     * - Polling the GO/DONE bit
+     * - Waiting for the ADC interrupt (interrupts enabled)
+     * 7. Read ADC Result.
+     * 8. Clear the ADC interrupt flag (required if interrupt is enabled).
+     */
     // select the proper analog input pin - decide between AN2 (clock) and AN3 (data)
     CHS0 = which;
+
+
     //clear ADC interrupt
-    ADIF = 0; // TODO do we really need to do this?
+    ADIF = 0; // TODO do we really need to do this? (Probably not)
+
+
     //wait? TODO does this happen automatically for us anyway? Also, I think the datasheet says max Taq is like 5us, but it shouldn't really matter for timing, in the long run, I think.
+    // It appears that this acquisition delay does not automatically happen.
+    // After changing the channel or enabling the ADC hardware we must provide sufficient time for the charge holding capacitor to reach the input channel voltage level.
+    // Check out section 16.3 for details.
+    // TODO what is the effective input impedance for our analog source? They suggest a maximum of 10 k ohms. ("The maximum recommended impedance for analog sources is 10 k ohm. This is required to meet the pin leakage specification.")
+    // Tacq = amplifier settling time + hold capacitor charging time + temperature coefficient (let's assume 50 deg C worst case - matches datasheet)
+    //      = 2 us + Tc + [(temp - 25C)(0.05 us/C)]
+    //      = 2 us + Tc + 1.25 us
+    //      = 3.25 us + Tc
+    // Tc can be approximated by Tc = -C_hold ( R1C + Rss + Rs ) ln(1/2047)
+    // Where Rs = source impedance
+    //       Rss = internal sampling switch impedance (4 k ohm)
+    //       R1C = ??? (datasheet said 1 k ohm)
+    //       Chold = Charge holding capacitor (12.5 pF)
     __delay_us(50);
+
+
+
     //start conversion
     GO = 1;
     //poll for go/done bit
     while (GO);
+
+    // We are ignoring the two least-significant bits of the 10-bit sample.
     return ADRESH;
 }
 
@@ -516,7 +549,7 @@ void main(void)
         // Basically, 00 is a standard data record, 01 comes last, and 06 is for blinky records - ignore all other record types
         if (rectype == 0)
         {
-            // this record is a data record:
+            // this record is a data record: - TODO we should just remove support for this type of record, nobody is ever going to use it and we haven't validated it
             EEADRL = addr_lo >> 1;              // convert hex file's byte address to a PIC word address
             if (addr_hi & 0x01)                 // does the high byte need to roll a bit into the low address?
                 EEADRL |= 0x80;
