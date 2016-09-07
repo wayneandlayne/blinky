@@ -50,7 +50,7 @@ __CONFIG(
     CLKOUTEN_OFF &          // CLKOUT function is disabled. I/O or oscillator function on the CLKOUT pin
     BOREN_OFF &             // Brown-out Reset disabled
     CPD_OFF &               // Data memory code protection is disabled
-    CP_OFF &                // Program memory code protection is disabled 
+    CP_OFF &                // Program memory code protection is disabled
     MCLRE_ON &              // MCLRE/VPP pin function is MCLR
     PWRTE_ON &              // PWRT enabled
     WDTE_OFF &              // WDT disabled
@@ -249,7 +249,7 @@ void do_auto_thresholding(void)
 // This function assumes that we've already synchronized
 unsigned char getch_blinky(void)
 {
-    #define POST_CLOCK_DELAY_US 500 
+    #define POST_CLOCK_DELAY_US 500
     unsigned char byte = 0;
     unsigned char count = 8;
     static bit temp;
@@ -302,33 +302,32 @@ void checksum(void)
         // this new "error!" 'message', on POV,  flashes  the 4th LED, indicating that you need to power cycle and retry
         PORTC = 0x00;
 #ifdef GRID
-	TRISA1 = 1;
-	TRISA2 = 1;
+        TRISA1 = 1;
+        TRISA2 = 1;
         TRISC = 0b11111010;
-        PORTC = 0b00000100; 
-        
+        PORTC = 0b00000100;
+
         __delay_ms(250);
 
-	while (1) 
-	{
-		RC2 = ~RC2;
-		RC0 = ~RC0;
-		__delay_ms(250);
-	};
+        while (1)
+        {
+            RC2 = ~RC2;
+            RC0 = ~RC0;
+            __delay_ms(250);
+        }
 #endif //GRID
 
 #ifdef POV
         TRISC2 = 0;
-	TRISC3 = 0;
+        TRISC3 = 0;
         RC2 = 0;
-	RC3 = 1;
+        RC3 = 1;
         while (1)
         {
             RC2 = ~RC2;
-	    RC3 = ~RC3;
+            RC3 = ~RC3;
             __delay_ms(250);
         }
-
 #endif //POV
 
     }
@@ -438,7 +437,7 @@ void main(void)
     ANSELC = 0;                 // all digital
     TRISC = 0xFF;                  // all inputs
     PORTC = 0;
-	
+
     TRISC0 = 0; // set PORTC0 to an output
     TRISC1 = 0;
     RC1 = 0;
@@ -447,7 +446,7 @@ void main(void)
     // switch is pressed, wait for the release to start
     while (!RA5)
     {
-	//toggle the first led
+        //toggle the first led
         RC0 = ~RC0;
         __delay_ms(500);
     }
@@ -491,7 +490,7 @@ void main(void)
         putch(getch());
     }
 */
-    
+
     /*
     // This helps to troubleshoot light levels to both sensors
     while (1)
@@ -512,7 +511,7 @@ void main(void)
         putch('\n');
     }
     */
-    
+
 
     /*
     // clear out the eeprom
