@@ -1,5 +1,12 @@
-<?php
-/*
+<!DOCTYPE html>
+<html>
+<head>
+<title>Blinky POV and Blinky GRID Programming</title>
+<link rel="stylesheet" type="text/css" href="drag.css" />
+<script type="text/javascript" src="SOTC-DnDLists.js"></script>
+<script type="text/javascript">
+
+    /*
    This project is copyright 2012 Wayne and Layne, LLC.
    Source code is licensed under the GPL v2 license.
    Everything else (graphics, html, media, etc.) is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License: http://creativecommons.org/licenses/by-sa/3.0/
@@ -7,57 +14,6 @@
    For more details about the blinky kits, please check out:
    http://www.wayneandlayne.com/projects/blinky/
 */
-$new_div_raw = "
-<table border=\"0\" cellpadding=\"4\" cellspacing=\"0\">
-    <tr>
-        <td style=\"vertical-align: top;\">
-            <img src=\"move.gif\" alt=\"Move\" title=\"Move\" class=\"move\" id=\"msg_' + num + '_handle\" /><br /><br />
-            <a href=\"#\" onclick=\"delete_message(' + num + ');\"><img src=\"delete.png\" alt=\"Delete\" title=\"Delete\" class=\"delete\" /></a>
-        </td>
-        <td style=\"vertical-align: top;\">
-            <strong>Type:</strong>
-            <label for=\"msg_' + num + '_type_text\"><input type=\"radio\" name=\"msg_' + num + '_type\" id=\"msg_' + num + '_type_text\" value=\"text\" checked=\"checked\" onclick=\"change_message_type(' + num + ');\"/>Text</label>
-            <label for=\"msg_' + num + '_type_pixel\"><input type=\"radio\" name=\"msg_' + num + '_type\" id=\"msg_' + num + '_type_pixel\" value=\"pixel\" onclick=\"change_message_type(' + num + ');\" />Pixel</label>&nbsp;&nbsp;-&nbsp;&nbsp;
-            
-            <strong>Style:</strong>
-            <label for=\"msg_' + num + '_anim_marq\"><input type=\"radio\" name=\"msg_' + num + '_anim\" id=\"msg_' + num + '_anim_marq\" value=\"marq\" checked=\"checked\" />Marquee <img src=\"msg_marq.gif\" alt=\"Marquee\" title=\"Marquee\" width=\"16\" height=\"24\" style=\"vertical-align: middle;\"/></label>
-            <label for=\"msg_' + num + '_anim_anim\"><input type=\"radio\" name=\"msg_' + num + '_anim\" id=\"msg_' + num + '_anim_anim\" value=\"anim\" />Animation <img src=\"msg_anim.gif\" alt=\"Animation\" title=\"Animation\" width=\"16\" height=\"24\" style=\"vertical-align: middle;\"/></label><br />
-            
-            <strong>End behavior:</strong> <select id=\"msg_' + num + '_end_type\"><option value=\"0\">Stop</option><option value=\"1\">Repeat this message</option><option value=\"2\" selected=\"selected\">Advance to next message</option><option value=\"3\">Easter egg...</option></select>&nbsp;&nbsp;&nbsp;<strong>Delay:</strong> <select id=\"msg_' + num + '_delay\"><option value=\"0\">0</option><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option><option value=\"6\">6</option><option value=\"7\" selected=\"selected\">7</option><option value=\"8\">8</option><option value=\"9\">9</option><option value=\"10\">10</option><option value=\"11\">11</option><option value=\"12\">12</option><option value=\"13\">13</option><option value=\"14\">14</option><option value=\"15\">15</option></select>
-            
-            <hr />
-
-            <div id=\"msg_' + num + '_text\" style=\"display: block;\">Message:<input type=\"text\" size=\"15\" style=\"font-weight: bold; font-size: 20px;\" id=\"msg_' + num + '_text_message\" value=\"Hello World\" /><br />Available characters: 0-9, A-Z, !, ?, &amp;, \',\', and \'.\'.</div>
-           
-            <div id=\"msg_' + num + '_pixel\" style=\"display: none;\">
-                Click to set LEDs. Click X to remove column. <input type=\"button\" onclick=\"add_led_col(' + num + ');\" value=\"Add Column\" />
-                <div id=\"msg_' + num + '_pixel_leds\">
-                </div>
-            </div>
-        </td>
-    </tr>
-</table>";
-
-$token = strtok($new_div_raw, "\n");
-$new_div = "";
-while ($token != false)
-{
-    $new_div .= $token;
-    $token = strtok("\n");
-}
-
-$led_line = "";
-for ($i = 0; $i < 8; $i++)
-    $led_line .= "<img src=\"led_dark.png\" onclick=\"toggle_led(this);\" /><br />";
-$led_line .= "<img src=\"led_x.png\" onclick=\"delete_led_column(this);\" />";
-?>
-
-<html>
-<head>
-<title>Blinky POV and Blinky GRID Programming</title>
-<link rel="stylesheet" type="text/css" href="drag.css" />
-<script type="text/javascript" src="SOTC-DnDLists.js"></script>
-<script type="text/javascript">
 
 function toggle_led(led)
 {
@@ -82,7 +38,7 @@ function add_led_col(which, left)
     var d = document.getElementById("msg_" + which + "_pixel_leds");
     var new_col = document.createElement("div");
     new_col.setAttribute("style", "float: left; width: 16px;");
-    new_col.innerHTML = '<?= $led_line ?>';
+    new_col.innerHTML = '<img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_x.png" onclick="delete_led_column(this);" />';
     if (left)
         d.insertBefore(new_col, null); // add it to the start - TODO make this work
     else
@@ -108,7 +64,7 @@ function add_new_message()
     new_div.className = "list";
     new_div.setAttribute("id", "msg_" + num);
     new_div.setAttribute("style", "height: 250px;");
-    new_div.innerHTML = '<?= $new_div ?>';
+    new_div.innerHTML = '<table border="0" cellpadding="4" cellspacing="0">    <tr>        <td style="vertical-align: top;">            <img src="move.gif" alt="Move" title="Move" class="move" id="msg_' + num + '_handle" /><br /><br />            <a href="#" onclick="delete_message(' + num + ');"><img src="delete.png" alt="Delete" title="Delete" class="delete" /></a>        </td>        <td style="vertical-align: top;">            <strong>Type:</strong>            <label for="msg_' + num + '_type_text"><input type="radio" name="msg_' + num + '_type" id="msg_' + num + '_type_text" value="text" checked="checked" onclick="change_message_type(' + num + ');"/>Text</label>            <label for="msg_' + num + '_type_pixel"><input type="radio" name="msg_' + num + '_type" id="msg_' + num + '_type_pixel" value="pixel" onclick="change_message_type(' + num + ');" />Pixel</label>&nbsp;&nbsp;-&nbsp;&nbsp;                        <strong>Style:</strong>            <label for="msg_' + num + '_anim_marq"><input type="radio" name="msg_' + num + '_anim" id="msg_' + num + '_anim_marq" value="marq" checked="checked" />Marquee <img src="msg_marq.gif" alt="Marquee" title="Marquee" width="16" height="24" style="vertical-align: middle;"/></label>            <label for="msg_' + num + '_anim_anim"><input type="radio" name="msg_' + num + '_anim" id="msg_' + num + '_anim_anim" value="anim" />Animation <img src="msg_anim.gif" alt="Animation" title="Animation" width="16" height="24" style="vertical-align: middle;"/></label><br />                        <strong>End behavior:</strong> <select id="msg_' + num + '_end_type"><option value="0">Stop</option><option value="1">Repeat this message</option><option value="2" selected="selected">Advance to next message</option><option value="3">Easter egg...</option></select>&nbsp;&nbsp;&nbsp;<strong>Delay:</strong> <select id="msg_' + num + '_delay"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7" selected="selected">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option></select>                        <hr />            <div id="msg_' + num + '_text" style="display: block;">Message:<input type="text" size="15" style="font-weight: bold; font-size: 20px;" id="msg_' + num + '_text_message" value="Hello World" /><br />Available characters: 0-9, A-Z, !, ?, &amp;, \',\', and \'.\'.</div>                       <div id="msg_' + num + '_pixel" style="display: none;">                Click to set LEDs. Click X to remove column. <input type="button" onclick="add_led_col(' + num + ');" value="Add Column" />                <div id="msg_' + num + '_pixel_leds">                </div>            </div>        </td>    </tr></table>';
     List.insertBefore(new_div, null);
     for (var i = 0; i < 7; i++)
         add_led_col(num, 0); // add columns of leds to the message's pixel section
@@ -512,7 +468,7 @@ if (getInternetExplorerVersion() != -1)
 <p>For the delay value, smaller values equal quicker data transmissions, but too small/fast might cause errors! The smallest reliable value depends on your monitor, browser, and computer graphics hardware. Start with a value of 40, and make sure it can reliably transfer your messages. You can then gradually reduce the delay time until you start having invalid transmissions, indicated by alternating flashing of the third and fourth LEDs on your Blinky board. We've have good luck with values of 25-40 on various systems we've tested.</p>
 <p>During normal transmission, the second LED will flash once for each byte of data received. When the transmission is finished, the blinky should immediately start displaying your messages. The blinky data is transmitted as a series of one or more <em>records</em>. After each record is transmitted, the blinky will double-check the data to make sure it was properly transmitted (using something called a <a href="http://en.wikipedia.org/wiki/Checksum">checksum</a>). If the checksum is invalid, meaning that there was a data transmission problem, the third and fourth LEDs on the blinky will flash rapidly in an alternating pattern. If this happens, press the Stop button, reset your blinky into the programming (bootloader) mode, and try again. If you continue to experience trouble, try increasing the value in the delay box and set your monitor's brightness to 100%. If nothing works, try the <a href="/forum/">forums</a>.</p>
 
-<div style="display: <?= (isset($_GET['debug'])) ? 'block' : 'none' ?>;">
+<div style="display: none;">
 <hr>
 <strong>Debug information:</strong><br />
 message_data:<br />
