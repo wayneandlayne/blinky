@@ -176,3 +176,41 @@ test.describe('eeprom data', () => {
     expect(messageData).toEqual('1,30,67,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,37,39,38,40,36');
   });
 });
+
+  test('verify initial square state is black for data and clock', async ({ page }) => {
+    await page.goto('/');
+
+    const clockBg = await page.evaluate(() => {
+      return window.getComputedStyle(document.getElementById('divclock')).backgroundColor;
+    });
+
+    const dataBg = await page.evaluate(() => {
+      return window.getComputedStyle(document.getElementById('divdata')).backgroundColor;
+    });
+
+    // Both should start as black (rgb(0, 0, 0))
+    expect(clockBg).toBe('rgb(0, 0, 0)');
+    expect(dataBg).toBe('rgb(0, 0, 0)');
+  });
+
+
+  test('verify stop button resets to black', async ({ page }) => {
+    await page.goto('/');
+
+    await page.locator('#msg_0_text_message').fill('TEST');
+    await page.getByRole('button', { name: 'Go' }).click();
+    await page.waitForTimeout(100);
+    await page.getByRole('button', { name: 'Stop' }).click();
+    await page.waitForTimeout(50);
+
+    const clockBg = await page.evaluate(() => {
+      return window.getComputedStyle(document.getElementById('divclock')).backgroundColor;
+    });
+
+    const dataBg = await page.evaluate(() => {
+      return window.getComputedStyle(document.getElementById('divdata')).backgroundColor;
+    });
+
+    expect(clockBg).toBe('rgb(0, 0, 0)');
+    expect(dataBg).toBe('rgb(0, 0, 0)');
+  });
