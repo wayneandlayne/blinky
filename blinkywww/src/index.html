@@ -3,6 +3,8 @@
 <head>
 <title>Blinky POV and Blinky GRID Programming</title>
 <link rel="stylesheet" type="text/css" href="drag.css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+
 <script type="text/javascript" src="SOTC-DnDLists.js"></script>
 <script type="text/javascript">
 
@@ -43,9 +45,9 @@ function add_led_col(which)
 {
     var d = document.getElementById("msg_" + which + "_pixel_leds");
     var new_col = document.createElement("div");
-    new_col.setAttribute("style", "float: left; width: 16px;");
-    new_col.innerHTML = '<img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_x.png" onclick="delete_led_column(this);" />';
-    d.insertBefore(new_col, null); // add it to the end
+    new_col.innerHTML = '<img src="led_dark.png" onclick="toggle_led(this);" /><img src="led_dark.png" onclick="toggle_led(this);" /><img src="led_dark.png" onclick="toggle_led(this);" /><img src="led_dark.png" onclick="toggle_led(this);" /><img src="led_dark.png" onclick="toggle_led(this);" /><img src="led_dark.png" onclick="toggle_led(this);" /><img src="led_dark.png" onclick="toggle_led(this);" /><img src="led_dark.png" onclick="toggle_led(this);" /><img src="led_x.png" onclick="delete_led_column(this);" />';
+
+    d.appendChild(new_col);
 
     // TODO check if we've finished a new block of seven columns and add a vertical thing - also have to handle it on removal!
     /*

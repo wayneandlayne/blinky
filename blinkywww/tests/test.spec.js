@@ -24,13 +24,13 @@ test.describe('eeprom data', () => {
     await page.locator('#msg_0_end_type').selectOption('Advance to next message');
     await page.locator('#msg_0_delay').selectOption('7');
 
-    await page.locator('#msg_0_pixel_leds > div > img').first().click();
-    await page.locator('#msg_0_pixel_leds > div:nth-child(2) > img:nth-child(3)').click();
-    await page.locator('#msg_0_pixel_leds > div:nth-child(3) > img:nth-child(5)').click();
-    await page.locator('#msg_0_pixel_leds > div:nth-child(4) > img:nth-child(7)').click();
-    await page.locator('#msg_0_pixel_leds > div:nth-child(5) > img:nth-child(9)').click();
-    await page.locator('#msg_0_pixel_leds > div:nth-child(6) > img:nth-child(11)').click();
-    await page.locator('#msg_0_pixel_leds > div:nth-child(7) > img:nth-child(13)').click();
+    await page.locator('div > img').first().click();
+    await page.locator('div:nth-child(2) > img:nth-child(2)').click();
+    await page.locator('div:nth-child(3) > img:nth-child(3)').click();
+    await page.locator('div:nth-child(4) > img:nth-child(4)').click();
+    await page.locator('div:nth-child(5) > img:nth-child(5)').click();
+    await page.locator('div:nth-child(6) > img:nth-child(6)').click();
+    await page.locator('div:nth-child(7) > img:nth-child(7)').click();
     await page.getByRole('button', { name: 'Go' }).click();
 
     const messageData = await page.locator('#message_data').inputValue();
@@ -214,3 +214,127 @@ test.describe('eeprom data', () => {
     expect(clockBg).toBe('rgb(0, 0, 0)');
     expect(dataBg).toBe('rgb(0, 0, 0)');
   });
+
+  test('verify pixel animation data padding', async ({ page }) => {
+    await page.goto('/');
+
+    // Switch to pixel mode with animation
+    await page.getByRole('radio', { name: 'Pixel' }).check();
+    await page.locator('#msg_0_anim_anim').check();
+
+    // Set some pixels in first 3 columns
+    await page.locator('#msg_0_pixel_leds > div > img').first().click();
+    await page.locator('#msg_0_pixel_leds > div:nth-child(2) > img:nth-child(3)').click();
+    await page.locator('#msg_0_pixel_leds > div:nth-child(3) > img:nth-child(5)').click();
+
+    await page.getByRole('button', { name: 'Go' }).click();
+
+    const messageData = await page.locator('#message_data').inputValue();
+    // Should be padded to 7 columns for animation mode
+    expect(messageData).toBe('1,222,7,128,32,8,0,0,0,0');
+    // Config byte 222 = 0xDE = 11011110 (pixel=1, anim=1, delay=7, advance=2)
+  });
+
+
+test('verify delete message with drag objects', async ({ page }) => {
+  await page.goto('/');
+
+  // Add multiple messages
+  await page.locator('input[value="Add New Message"]').click();
+  await page.locator('input[value="Add New Message"]').click();
+
+  // Try to delete the middle message
+  await page.locator('#msg_1 .delete').click();
+
+  // Handle the confirmation dialog
+  page.on('dialog', dialog => dialog.accept());
+
+  // Click delete again with dialog handler active
+  await page.locator('#msg_1 .delete').click();
+
+  // Verify message is removed
+  await expect(page.locator('#msg_1')).not.toBeVisible();
+
+  // Verify other messages still exist
+  await expect(page.locator('#msg_0')).toBeVisible();
+  await expect(page.locator('#msg_2')).toBeVisible();
+});
+
+test('verify message ordering after deletion', async ({ page }) => {
+  await page.goto('/');
+
+  // Add 3 messages
+  await page.locator('input[value="Add New Message"]').click();
+  await page.locator('input[value="Add New Message"]').click();
+
+  await page.locator('#msg_0_text_message').fill('FIRST');
+  await page.locator('#msg_1_text_message').fill('SECOND');
+  await page.locator('#msg_2_text_message').fill('THIRD');
+
+  // Delete middle message
+  page.on('dialog', dialog => dialog.accept());
+  await page.locator('#msg_1 .delete').click();
+
+  // make sure they're in the right order on the screen
+
+  // Verifies messages remain visible in correct positions
+  await expect(page.locator('#msg_0')).toBeVisible();
+  await expect(page.locator('#msg_2')).toBeVisible();
+
+  // Checks vertical positioning
+  const msg0Rect = await page.locator('#msg_0').boundingBox();
+  const msg2Rect = await page.locator('#msg_2').boundingBox();
+  expect(msg0Rect.y).toBeLessThan(msg2Rect.y);
+
+  //make sure msg_1 doesn't exist anymore
+  await expect(page.locator('#msg_1')).not.toBeVisible();
+
+  // Transmit and verify order
+  await page.getByRole('button', { name: 'Go' }).click();
+
+  // check message data
+  const messageData = await page.locator('#message_data').inputValue();
+  expect(messageData).toEqual('2,30,5,15,18,27,28,29,30,5,29,17,18,27,13');
+});
+
+
+
+test.describe('transmission data validation', () => {
+  test('verify transmission data', async ({ page }) => {
+    await page.goto('/');
+
+    await page.locator('#msg_0_text_message').fill('A');
+    await page.getByRole('button', { name: 'Go' }).click();
+
+    const xmitDataHex = await page.locator('#xmit_data_hex').inputValue();
+    const hexValues = xmitDataHex.split(',');
+
+    expect(xmitDataHex).toEqual('04,00,00,06,01,1E,01,0A,CC,00,00,00,01,FF');
+  });
+
+  test('verify 16-byte record splitting', async ({ page }) => {
+    await page.goto('/');
+
+    // Create a message longer than 16 bytes
+    await page.locator('#msg_0_text_message').fill('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+    await page.getByRole('button', { name: 'Go' }).click();
+
+    const xmitDataHex = await page.locator('#xmit_data_hex').inputValue();
+
+    expect(xmitDataHex).toEqual('10,00,00,06,01,1E,1A,0A,0B,0C,0D,0E,0F,10,11,12,13,14,15,16,E1,0D,00,10,06,17,18,19,1A,1B,1C,1D,1E,1F,20,21,22,23,64,00,00,00,01,FF');
+  });
+
+  test('verify end-of-transmission record', async ({ page }) => {
+    await page.goto('/');
+
+    await page.locator('#msg_0_text_message').fill('TEST');
+    await page.getByRole('button', { name: 'Go' }).click();
+
+    const xmitData = await page.locator('#xmit_data').inputValue();
+    const bytes = xmitData.split(',').map(Number);
+
+    // Last 5 bytes should be the reset record: 0,0,0,1,255
+    const lastFive = bytes.slice(-5);
+    expect(lastFive).toEqual([0, 0, 0, 1, 255]);
+  });
+});

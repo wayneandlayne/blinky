@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+[id$="_pixel_leds"] {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(9, auto);
+    gap: 0;
+    width: fit-content;
+}
+
+[id$="_pixel_leds"] > div {
+    float: none !important;
+    width: auto !important;
+    display: contents;
+}
+
+[id$="_pixel_leds"] img {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
