@@ -1,0 +1,21 @@
+{
+  "name": "blinky",
+  "version": "1.0.0",
+  "description": "Blinky POV/GRID programming interface",
+  "author": "Adam Wolf, Matthew Beckler",
+  "main": "index.js",
+  "directories": {
+    "test": "playwright test"
+  },
+  "scripts": {
+    "start": "serve src/"
+  },
+  "dependencies": {
+    "playwright": "^1.53.1",
+    "serve": "^14.2.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.53.1",
+    "@types/node": "^24.0.4"
+  }
+}

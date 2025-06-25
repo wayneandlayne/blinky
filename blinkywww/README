@@ -1,8 +1,17 @@
 This is the code that runs the Blinky Programmer website:
 http://www.wayneandlayne.com/blinky_programmer/
 
-Sorry that the code is probably really awkward or doing lots of things wrong. We're not really web developers, and only know enough to get by (also known as "knowing just enough to be dangerous").
+We wrote this code circa 2010?  It could use some love.
 
 # Development
 
+Try `npm install` to install the dependencies.  If you don't have npm installed, you can try that.
+
+`npm install`
+
+You can serve the site locally with `npm run start` which starts a local web server at http://localhost:3000.
+
 ## Testing
+
+We use Playwright.  You can run `npm run test` but you can also use `npx playwright test` to run the tests directly.
+
