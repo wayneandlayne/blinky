@@ -289,7 +289,7 @@ function encode_xmit_data()
 function stop_dump()
 {
     transmitting = 0;
-    document.getElementById("progressImg").width = 0;
+    document.getElementById("progressBar").value = 0;
     document.getElementById("progressSpan").innerHTML = "Canceled";
 }
 
@@ -384,21 +384,11 @@ function set_data()
             set_color_data("white");
         index++;
 
-        // record progress - not added because it's too difficult
-        /*
-        var byte_ix = index / 8;
-        if (xmit_raw.length - index <= (8 * 21))
-            var progress = 0; // at the end of transmission
-        else
-            var progress = (byte_ix % 21) / 21; // in the middle of transmission
-        document.getElementById("recordProgressImg").width = progress_max_width * progress;
-        document.getElementById("recordProgressSpan").innerHTML = Math.round(100 * progress) + "%";
-        */
 
         // overall progress
         var progress = index / xmit_raw.length;
         var seconds_remaining = Math.round(((xmit_raw.length - index) * (delay * 2)) / 1000.0);
-        document.getElementById("progressImg").width = progress_max_width * progress;
+        document.getElementById("progressBar").value = progress * 100;
         document.getElementById("progressSpan").innerHTML = Math.round(100 * progress) + "% (" + seconds_remaining + "s left)";
 
         setTimeout('toggle_clock()', delay);
@@ -484,9 +474,11 @@ if (getInternetExplorerVersion() != -1)
 <p><strong>Please note!</strong> On 2011/09/10 we switched the locations of the clock and data squares below to make it easier to hold the Blinky device while programming, based on customer feed back we have received over the past few months. This requires no change in the Blinky firmware, only a change in how you align the sensors on the screen. Please <a href="/contact/">let us know</a> if this change is a dealbreaker.</p>
 <div style="width: 620px;">
     <div style="float: right; width: 301px; padding-left: 10px;">
-        <br /><div style="width: 301px; height: 30px; border: 2px solid white; position: relative;">
-            <img src="progress_bar_30px_tall.png" height="30" width="1" id="progressImg" style="position: absolute; top: 0; left: 0; z-index: -1;" />
-            <div style="padding: 5px;">Progress: <span id="progressSpan"></span></div>
+        <br />
+        <div class="progress-wrapper">
+            <label for="progressBar" class="visually-hidden">Transmission progress</label>
+            <progress id="progressBar" value="0" max="100"></progress>
+            <div class="progress-status">Progress: <span id="progressSpan">Ready</span></div>
         </div>
         <br />
         <table border="0" cellspacing="2" cellpadding="2">

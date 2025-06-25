@@ -9,6 +9,18 @@
   font-family: system-ui, sans-serif;
 }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 body {
     line-height: 1.5;
     min-height: 100vh;
@@ -61,4 +73,46 @@ textarea, select {
     position: relative;
     border: 1px solid white;
     width: 575px;
+}
+
+/* Native progress element styling */
+.progress-wrapper {
+    width: 301px;
+    margin-bottom: 10px;
+}
+
+progress {
+    width: 100%;
+    height: 30px;
+}
+
+/* WebKit browsers (Chrome, Safari) */
+progress::-webkit-progress-bar {
+    background-color: #f0f0f0;
+    border: 2px solid white;
+    border-radius: 2px;
+}
+
+progress::-webkit-progress-value {
+    background-color: #4CAF50;
+    border-radius: 0;
+    transition: width 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+/* Firefox */
+progress::-moz-progress-bar {
+    background-color: #4CAF50;
+    border-radius: 0;
+    transition: width 0.3s ease;
+}
+
+progress {
+    color: #4CAF50;
+}
+
+.progress-status {
+    padding: 5px 0;
+    font-weight: bold;
 }
