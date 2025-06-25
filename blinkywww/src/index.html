@@ -33,16 +33,13 @@ function delete_led_column(col)
 }
 
 // adds a new column of leds to the specified message
-function add_led_col(which, left)
+function add_led_col(which)
 {
     var d = document.getElementById("msg_" + which + "_pixel_leds");
     var new_col = document.createElement("div");
     new_col.setAttribute("style", "float: left; width: 16px;");
     new_col.innerHTML = '<img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_dark.png" onclick="toggle_led(this);" /><br /><img src="led_x.png" onclick="delete_led_column(this);" />';
-    if (left)
-        d.insertBefore(new_col, null); // add it to the start - TODO make this work
-    else
-        d.insertBefore(new_col, null); // add it to the end
+    d.insertBefore(new_col, null); // add it to the end
 
     // TODO check if we've finished a new block of seven columns and add a vertical thing - also have to handle it on removal!
     /*
@@ -67,7 +64,7 @@ function add_new_message()
     new_div.innerHTML = '<table border="0" cellpadding="4" cellspacing="0">    <tr>        <td style="vertical-align: top;">            <img src="move.gif" alt="Move" title="Move" class="move" id="msg_' + num + '_handle" /><br /><br />            <a href="#" onclick="delete_message(' + num + ');"><img src="delete.png" alt="Delete" title="Delete" class="delete" /></a>        </td>        <td style="vertical-align: top;">            <strong>Type:</strong>            <label for="msg_' + num + '_type_text"><input type="radio" name="msg_' + num + '_type" id="msg_' + num + '_type_text" value="text" checked="checked" onclick="change_message_type(' + num + ');"/>Text</label>            <label for="msg_' + num + '_type_pixel"><input type="radio" name="msg_' + num + '_type" id="msg_' + num + '_type_pixel" value="pixel" onclick="change_message_type(' + num + ');" />Pixel</label>&nbsp;&nbsp;-&nbsp;&nbsp;                        <strong>Style:</strong>            <label for="msg_' + num + '_anim_marq"><input type="radio" name="msg_' + num + '_anim" id="msg_' + num + '_anim_marq" value="marq" checked="checked" />Marquee <img src="msg_marq.gif" alt="Marquee" title="Marquee" width="16" height="24" style="vertical-align: middle;"/></label>            <label for="msg_' + num + '_anim_anim"><input type="radio" name="msg_' + num + '_anim" id="msg_' + num + '_anim_anim" value="anim" />Animation <img src="msg_anim.gif" alt="Animation" title="Animation" width="16" height="24" style="vertical-align: middle;"/></label><br />                        <strong>End behavior:</strong> <select id="msg_' + num + '_end_type"><option value="0">Stop</option><option value="1">Repeat this message</option><option value="2" selected="selected">Advance to next message</option><option value="3">Easter egg...</option></select>&nbsp;&nbsp;&nbsp;<strong>Delay:</strong> <select id="msg_' + num + '_delay"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7" selected="selected">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option></select>                        <hr />            <div id="msg_' + num + '_text" style="display: block;">Message:<input type="text" size="15" style="font-weight: bold; font-size: 20px;" id="msg_' + num + '_text_message" value="Hello World" /><br />Available characters: 0-9, A-Z, !, ?, &amp;, \',\', and \'.\'.</div>                       <div id="msg_' + num + '_pixel" style="display: none;">                Click to set LEDs. Click X to remove column. <input type="button" onclick="add_led_col(' + num + ');" value="Add Column" />                <div id="msg_' + num + '_pixel_leds">                </div>            </div>        </td>    </tr></table>';
     List.insertBefore(new_div, null);
     for (var i = 0; i < 7; i++)
-        add_led_col(num, 0); // add columns of leds to the message's pixel section
+        add_led_col(num); // add columns of leds to the message's pixel section
     message_drag_objects[num_messages] = new dragObject("msg_" + num, "msg_" + num + "_handle", null, null, itemDragBegin, itemMoved, itemDragEnd, false);
     num_messages += 1;
 }
