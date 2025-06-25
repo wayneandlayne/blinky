@@ -29,6 +29,12 @@ function toggle_led(led)
 function delete_led_column(col)
 {
     var my_parent_div = col.parentNode;
+    // remove onclick handlers
+    var images = my_parent_div.getElementsByTagName('img');
+    for (var i = 0; i < images.length; i++) {
+        images[i].onclick = null;  // Remove onclick handler
+    }
+
     my_parent_div.parentNode.removeChild(my_parent_div);
 }
 
