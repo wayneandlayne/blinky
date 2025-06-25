@@ -1,6 +1,42 @@
-* {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
+
+* {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+main {
+    max-width: 60ch;
+    margin: auto; /* center */
+    padding: 0 2em;
+}
+
+p {
+  text-wrap: pretty;
+  margin-bottom: 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+  margin-bottom: 0.5em;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
 [id$="_pixel_leds"] {
     display: grid;
     grid-auto-flow: column;
