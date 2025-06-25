@@ -15,3 +15,18 @@ You can serve the site locally with `npm run start` which starts a local web ser
 
 We use Playwright.  You can run `npm run test` but you can also use `npx playwright test` to run the tests directly.
 
+# TODO (before merging this in)
+
+* Flexbox for the layout
+* Remove all floats
+* Test on small screens
+* Try requestAnimationFrame instead of setTimeout
+* Adjust text, visual design
+* Maybe pull the images for LED and use background color on round divs instead?
+* Add more pixel mode tests
+  * multiple messages
+  * mixed pixel and text messages
+  * all the pixel options
+  * delete some lines, add some lines
+  * make sure the clicked pixels are "on" and the others are off
+* Test on a real Blinky
