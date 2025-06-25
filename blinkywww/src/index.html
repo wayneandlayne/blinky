@@ -81,11 +81,40 @@ function delete_message(which)
     {
         alert("Trying to delete a message with id > number of messages! Something went seriously wrong. Please tell wayneandlayne@wayneandlayne.com what you were trying to do!");
     }
-    if (confirm("Are you sure you want to delete this message?"))
-    {
-        message_drag_objects[which].Dispose();
-        List.removeChild(document.getElementById("msg_" + which));
+
+    if (!(confirm("Are you sure you want to delete this message?"))) {
+        return; // user cancelled the deletion
     }
+
+    const element = document.getElementById("msg_" + which);
+
+    // Clean up delete button handler
+    var deleteLink = element.querySelector('a[onclick*="delete_message"]');
+    if (deleteLink) deleteLink.onclick = null;
+
+    // Clean up radio button handlers
+    var radios = element.querySelectorAll('input[onclick*="change_message_type"]');
+    radios.forEach(radio => radio.onclick = null);
+
+    // Clean up add column button
+    var addBtn = element.querySelector('input[onclick*="add_led_col"]');
+    if (addBtn) addBtn.onclick = null;
+
+    // Clean up all LED handlers in pixel area
+    var leds = element.querySelectorAll('img[onclick*="toggle_led"]');
+    leds.forEach(led => led.onclick = null);
+
+    // Clean up column delete buttons
+    var delBtns = element.querySelectorAll('img[onclick*="delete_led_column"]');
+    delBtns.forEach(btn => btn.onclick = null);
+
+    // Dispose drag object
+    if (message_drag_objects[which]) {
+        message_drag_objects[which].Dispose();
+        message_drag_objects[which] = null;
+    }
+
+    List.removeChild(element);
 }
 
 // TODO add up/down buttons on mobiles to allow them to re-order messages
