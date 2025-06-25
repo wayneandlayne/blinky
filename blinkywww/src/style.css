@@ -56,3 +56,9 @@ textarea, select {
     height: 16px;
     display: block;
 }
+
+#list {
+    position: relative;
+    border: 1px solid white;
+    width: 575px;
+}
