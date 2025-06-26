@@ -1,0 +1,177 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: #90CAF9;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+body {
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+main {
+    max-width: 65ch;
+    margin: auto; /* center */
+    padding: 0 2em;
+}
+
+p, li {
+    text-wrap: pretty;
+    margin-bottom: 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+    margin-bottom: 0.5em;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+[id$="_pixel_leds"] {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(9, auto);
+    gap: 0;
+    width: fit-content;
+}
+
+[id$="_pixel_leds"] > div {
+    float: none !important;
+    width: auto !important;
+    display: contents;
+}
+
+[id$="_pixel_leds"] img {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+#list {
+    position: relative;
+    border: 1px solid white;
+    width: 575px;
+}
+
+/* Native progress element styling */
+.progress-wrapper {
+    margin-bottom: 10px;
+}
+
+progress {
+    width: 100%;
+    height: 30px;
+}
+
+/* WebKit browsers (Chrome, Safari) */
+progress::-webkit-progress-bar {
+    background-color: #f0f0f0;
+    border: 2px solid white;
+    border-radius: 2px;
+}
+
+progress::-webkit-progress-value {
+    background-color: #4CAF50;
+    border-radius: 0;
+    transition: width 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+/* Firefox */
+progress::-moz-progress-bar {
+    background-color: #4CAF50;
+    border-radius: 0;
+    transition: width 0.3s ease;
+}
+
+progress {
+    color: #4CAF50;
+}
+
+.progress-status {
+    padding: 5px 0;
+    font-weight: bold;
+}
+
+ol {
+    list-style: none;
+    padding-inline-start: 0;
+}
+
+.transmission-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    justify-content: center;
+}
+
+.data-transmission-panel {
+    display: flex;
+}
+
+.transmission-panel button {
+    height: 50px;
+    width: 60px;
+    font-size: 100%;
+    font-weight: bold;
+    margin: 0.5em;
+}
+
+.transmission-square {
+    width: 150px;
+    height: 150px;
+    background-color: black;
+    border: 2px solid gray;
+    color: gray;
+    display: flex;
+    justify-content: center;
+    padding: 0.5em;
+}
+
+#divclock {
+    border-right: 1px dashed gray;
+}
+
+#divdata {
+    border-left: 1px dashed gray;
+}
+
+.programming-controls {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
