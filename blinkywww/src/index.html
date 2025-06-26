@@ -472,27 +472,28 @@
     </p>
     <div class="transmission-panel">
         <div>
+            <div class="programming-controls">
+                <div>
+                    <label>Delay: <input type="text" size="4" id="delay" value="40"/></label>
+                </div>
+                <div class="programming-buttons">
+                    <button onClick="javascript:start_dump();"
+                            class="go-button">Go</button>
+                    <button onClick="javascript:stop_dump();"
+                            class="stop-button">Stop</button>
+                </div>
+            </div>
+
             <div class="progress-wrapper">
+                <div class="progress-status">Progress: <span id="progressSpan">Ready</span></div>
                 <label for="progressBar" class="visually-hidden">Transmission progress</label>
                 <progress id="progressBar" value="0" max="100"></progress>
-                <div class="progress-status">Progress: <span id="progressSpan">Ready</span></div>
             </div>
-            <br/>
-            <table border="0" cellspacing="2" cellpadding="2">
-                <tr>
-                    <td><button onClick="javascript:start_dump();"
-                               class="go-button">Go</button></td>
-                    <td>
-                        <button onClick="javascript:stop_dump();"
-                               class="stop-button">Stop</button>
-                    </td>
-                    <td>Delay (ms):<br/><input type="text" size="4" id="delay" value="40"/></td>
-                </tr>
-            </table>
         </div>
-        <div style="width: 301px; background-color: white; border: 2px solid white;">
-            <div id="divdata" style="width: 150px; height: 150px; background-color: black; float: right;">Data</div>
-            <div id="divclock" style="width: 150px; height: 150px; background-color: black;">Clock</div>
+
+        <div class="data-transmission-panel">
+            <div class="transmission-square" id="divclock">Clock</div>
+            <div class="transmission-square" id="divdata">Data</div>
         </div>
     </div>
     <h2>3. Troubleshooting</h2>

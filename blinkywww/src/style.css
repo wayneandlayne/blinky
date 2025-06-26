@@ -33,12 +33,12 @@ body {
 }
 
 main {
-    max-width: 60ch;
+    max-width: 65ch;
     margin: auto; /* center */
     padding: 0 2em;
 }
 
-p {
+p, li {
     text-wrap: pretty;
     margin-bottom: 1em;
 }
@@ -83,7 +83,6 @@ textarea, select {
 
 /* Native progress element styling */
 .progress-wrapper {
-    width: 301px;
     margin-bottom: 10px;
 }
 
@@ -123,9 +122,51 @@ progress {
     font-weight: bold;
 }
 
-.programming-panel button {
+ol {
+    list-style: none;
+}
+
+.transmission-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    justify-content: center;
+}
+
+.data-transmission-panel {
+    display: flex;
+}
+
+.transmission-panel button {
     height: 50px;
     width: 60px;
     font-size: 100%;
     font-weight: bold;
+    margin: 0.5em;
+}
+
+.transmission-square {
+    width: 150px;
+    height: 150px;
+    background-color: black;
+    border: 2px solid gray;
+    color: gray;
+    display: flex;
+    justify-content: center;
+    padding: 0.5em;
+}
+
+#divclock {
+    border-right: 1px dashed gray;
+}
+
+#divdata {
+    border-left: 1px dashed gray;
+}
+
+.programming-controls {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
 }
