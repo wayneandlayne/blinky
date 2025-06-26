@@ -9,6 +9,12 @@
     font-family: system-ui, sans-serif;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
