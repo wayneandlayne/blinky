@@ -466,9 +466,8 @@
         it easier to hold the Blinky device while programming, based on customer feed back we have received over the
         past few months. This requires no change in the Blinky firmware, only a change in how you align the sensors on
         the screen. Please <a href="/contact/">let us know</a> if this change is a dealbreaker.</p>
-    <div style="width: 620px;">
-        <div style="float: right; width: 301px; padding-left: 10px;">
-            <br/>
+    <div class="programming-panel">
+        <div>
             <div class="progress-wrapper">
                 <label for="progressBar" class="visually-hidden">Transmission progress</label>
                 <progress id="progressBar" value="0" max="100"></progress>
@@ -477,11 +476,11 @@
             <br/>
             <table border="0" cellspacing="2" cellpadding="2">
                 <tr>
-                    <td><input type="button" onClick="javascript:start_dump();"
-                               style="height: 50px; width: 60px; font-size: 100%; font-weight: bold;" value="Go"/></td>
+                    <td><button onClick="javascript:start_dump();"
+                               class="go-button">Go</button></td>
                     <td>
-                        <input type="button" onClick="javascript:stop_dump();"
-                               style="height: 50px; width: 60px; font-size: 100%; font-weight: bold;" value="Stop"/>
+                        <button onClick="javascript:stop_dump();"
+                               class="stop-button">Stop</button>
                     </td>
                     <td>Delay (ms):<br/><input type="text" size="4" id="delay" value="40"/></td>
                 </tr>

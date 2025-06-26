@@ -116,3 +116,10 @@ progress {
     padding: 5px 0;
     font-weight: bold;
 }
+
+.programming-panel button {
+    height: 50px;
+    width: 60px;
+    font-size: 100%;
+    font-weight: bold;
+}
