@@ -124,6 +124,7 @@ progress {
 
 ol {
     list-style: none;
+    padding-inline-start: 0;
 }
 
 .transmission-panel {
